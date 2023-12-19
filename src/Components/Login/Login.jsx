@@ -1,75 +1,76 @@
 import React, { useState } from "react";
+
 import "./Login.css";
-import {} from "react-bootstrap-icons";
+
+import { Mail, Lock } from "react-bootstrap-icons";
+import { MdMail, MdLock } from "react-icons/md";
+import {} from "react-icons/ai";
+// import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 const Login = () => {
-  const [data,setData] = useState({ email:"",password:"" });
-  const [error,setError] = useState("");
+  const [data, setData] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
 
-  const handleChange = ({ currentTarget:input})=>{
-setData({...data,[input.name]:input.value});
-};
-const handleSubmit = async (e) =>{
-  e.preventDefault();
-  try{
-    const url ="http://localhost:8000/api/auth";
-    const{data:res} = await axios.post(url,data);
-    localStorage.setItem("token",res.data);
-    window.location="/Home";
-  }catch(error){
-    if(
-      error.response &&
-      error.response.status >=400 &&
-      error.response.status<=500
-    ){
-      setError(error.response.data.message);
+  const handleChange = ({ currentTarget: input }) => {
+    setData({ ...data, [input.name]: input.value });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const url = "https://athentication-server.onrender.com/api/auth";
+      const { data: res } = await axios.post(url, data);
+      localStorage.setItem("token", res.data);
+      window.location = "/Home";
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setError(error.response.data.message);
+      }
     }
-  }
-
   };
 
   return (
-    <div className="form_container">
+    <div className="box">
+      <span className="borderLine"></span>
       <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <br />
-        <br />
-        <label>Email</label>
-        <input
-          class="box"
-          type="email"
-          name="email"
-          id="email"
-          placeholder="E-Mail "
-          onChange={handleChange}
-          value={data.email}
-          required
-        />
-        <br />
-        
-       <label>password</label>
-        <input
-          class="box"
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Password "
-          onChange={handleChange}
-          value={data.password}
-          required
-        />
-        <br />
+        <h2>Sign in </h2>
+        <div class="inputBox">
+          <input
+            type="email"
+            name="email"
+            value={data.email}
+            onChange={handleChange}
+            required="required"
+          />
+          <span>Email</span>
+          <i></i>
+        </div>
+        <div className="inputBox">
+          <input
+            type="password"
+            name="password"
+            value={data.password}
+            onChange={handleChange}
+            required="required"
+          />
+          <span>Password</span>
+          <i></i>
+        </div>
+        <div className="links">
+          <a href="#">Forget Password</a>
+          <Link to="/Register">
+            <a href="#">Singup</a>
+          </Link>
+        </div>
 
-        {error && <div className={Login.error_msg}>{error}</div>}
-         <button className="button2">Submit</button><br/>
-        
-         <a href="#"> Forget password?</a><span>OR</span><a href="Register"> Register</a>
-        
+        <input type="submit" value="Register" />
       </form>
     </div>
   );
-  };
+};
 
-
-  export default Login;
+export default Login;

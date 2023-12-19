@@ -1,118 +1,204 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "poppins",sans-serif;
-    cursor: pointer;
-}
-@media  screen and( max-width:1000px) {
-    .form_container{
-        width: 45%;
-    }
-}
-@media  screen and( max-width:700px) {
-    .form_container{
-        width: 45%;
-    }
-}
-.form_container{
-    display: flex;
-    width: 30%;
-    height: 70%;
-}
- 
-.form_container{
-    height: 100vh;
-    width: 100%;
+    font-family: "poppins,sans-serif";
+  }
+  body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right,#3f5efb,#fc466b);
-}
-form{
-    
-    width: 25rem;
-    height: 32rem;
+    min-height: 100vh;
+    background:  linear-gradient(to right,#3f5efb,#fc466b);
+  }
+  .box {
+    position: relative;
+    width: 380px;
+    height: 480px;
+    background: #1c1c1c;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .box::before
+  {
+    content: '';
+    position: absolute;
+    top:-50%;
+    left:-50%; 
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg,transparent,transparent,#45f3ff,#45f3ff,#45f3ff);
+  z-index: 1;
+  transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+  /* animation-delay: -3s; */
+  }
+  .box::after
+  {
+    content: '';
+    position: absolute;
+    top:-50%;
+    left:-50%; 
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg,transparent,transparent,#45f3ff,#45f3ff,#45f3ff);
+  z-index: 1;
+  transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+  animation-delay: -3s;
+  }
+  .borderLine
+  {
+    position: absolute;
+    top: 0;
+    inset: 0;
+  
+  }
+  .borderLine::before
+  {
+    content: '';
+    position: absolute;
+    top:-50%;
+    left:-50%; 
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg,transparent
+    ,transparent,#ff2770,#ff2770,#ff2770);
+  z-index: 1;
+  transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+  animation-delay: -1.5s;
+  
+  }
+  .borderLine::after
+  {
+    content: '';
+    position: absolute;
+    top:-50%;
+    left:-50%; 
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg,transparent
+    ,transparent,#ff2770,#ff2770,#ff2770);
+  z-index: 1;
+  transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+  animation-delay: -4.5s;
+  
+  }
+  @keyframes animate
+  {
+    0%
+  {
+  transform:rotate(0deg);
+  }
+  100%
+  {
+    transform: rotate(360deg);
+  }
+  }
+  .box form {
+    position: absolute;
+    inset: 4px;
+    background: #222;
+    padding: 50px 40px;
+    border-radius: 8px;
+    z-index: 2;
     display: flex;
     flex-direction: column;
-    background: rgba(255,255,255,.3);
-    box-shadow: 0 8px 32px 0 rgba(31,38,135,.37) ;
-    border-radius: 30px;
-    border-left: 1 px solid rgba(255,255,255,.3);
-    border-top: 1 px solid rgba(255,255,255,.3);
-
-}
-h1{
-    font-size: 50px;
+  }
+  .box form h2 {
+    color: #e6dede;
+    font-weight: 500;
     text-align: center;
-    color: rgb(242, 250, 247);
-    text-shadow: 2px 2px 4px rgba(0,0,0,.2);
-    letter-spacing: 2px;
-    margin-bottom: 5%;
-    opacity: .7;
-}
-
-label{
-    font-size: 20px;
-    color: rgb(245, 229, 229);
-    margin-left: 10%;
-    opacity: .8;
-    text-shadow: 2px 2px 4px rgba(0,0,0,.2);
-}
-form input{
-    justify-content: center;
-    width: 80%;
-    margin: 5% auto;
-    margin-bottom: 5%;
-    border: none;
+    letter-spacing: 0.1em;
+  }
+  .box form .inputBox {
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+  }
+  .box form .inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 25px 10px 10px;
+    background: transparent;
     outline: none;
-    background:transparent;
-    color: white;
-    border-bottom: 1px solid rgba(255,255,255,0.6);
-   }
-   input{
-    color: wheat;
-   }
-
-   .error_msg {
-	width: 370px;
-	padding: 15px;
-	margin: 5px 0;
-	font-size: 14px;
-	background-color: #f34646;
-	color: white;
-	border-radius: 5px;
-	text-align: center;
-}
-
-.button2{
-    width: 50%;
-    margin: auto;
-    color: rgb(54, 14, 165);
-    font-size: 15px;
-    opacity: .7;
-    background: rgba(255,255,255,0.3);
-    padding: 10px 30px;
     border: none;
-    outline: none;
-    border-radius: 20px;
-    text-shadow:2px 2px 4px rgba(255,255,255,.2) ;
-    box-shadow: 3px 3px 5px 5px rgba(31,38,135,.37);
-    border-left: 1px solid rgba(255,255,255,.3);
-    border-top: 1px solid rgba(255,255,255,.3);
-}
-
-a{
-    font-size: 12px;
-    text-align: center;
-    opacity: .7;
-    text-decoration: none;
-}
-span{
-
-    font-size: 20px;
-    color: rgb(15, 11, 11);
-    margin-left: 45%;
-    opacity: .8;
-    text-shadow: 2px 2px 4px rgba(0,0,0,.2)
-}
+    box-shadow: none;
+    color: #23242a;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  .box form .inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 20px 0px 10px;
+    pointer-events: none;
+    color: #8f8f8f;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+  }
+  .box form .inputBox input:valid ~ span,
+  .box form .inputBox input:focus ~ span {
+    color: #fff;
+    font-size: 0.75em;
+    transform: translateY(-34px);
+  }
+  .box form .inputBox i
+  {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: 0.5s;
+  pointer-events: none;
+  }
+  .box form .inputBox input:valid ~ i,
+  .box form .inputBox input:focus ~ i 
+  {
+      height: 44px;
+  
+  }
+  .box form .links
+  {
+      display: flex;
+      justify-content: space-between;
+  
+  }
+  .box form .links a
+  {
+      margin: 10px 0;
+      font-size: 0.75em;
+      color: #8f8f8f;
+      text-decoration: none;
+  }
+  .box form.links a:hover,
+  .box form.links a:nth-child(2)
+  {
+      color: #fff;
+  }
+  .box form  input[type="submit"]
+  {
+      border: none;
+      outline: none;
+      padding: 9px 25px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 0.9em;
+      border-radius: 4px;
+      font-weight: 600;
+      width: 100px;
+      margin-top: 40px;
+  }
+  .box form input[type="submit"]:active
+  {
+      opacity: 0.8;
+  } 
